@@ -1,0 +1,20 @@
+﻿@using SistemaGestorDePacientes.Core.Application.ViewModel.MedicoViewModel;
+@model SistemaGestorDePacientes.Core.Application.ViewModel.MedicoViewModel.MedicoPostViewModel;
+
+@{
+    ViewData["Title"] = "Eliminar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form asp-controller="Medico" asp-action="EliminarMedico" method="post" style="margin-bottom:500px ;">
+    <h2 class="text-black  fw-bold text-center mt-3">¿Desea Eliminar este Medico?</h2>
+    <div style="gap: 20px;" class="d-flex justify-content-center align-content-between mt-3 ">
+        <input type="hidden" asp-for="Id" />
+        <button class="btn btn-danger " type="submit">Eliminar</button>
+        <a asp-controller="Medico" class="btn btn-info text-white" asp-action="Index">Cancelar</a>
+    </div>
+
+</form>
+
+
+

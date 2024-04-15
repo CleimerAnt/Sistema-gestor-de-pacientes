@@ -1,0 +1,75 @@
+﻿body {
+    font-family: "Merriweather", serif;
+}
+
+.titulo {
+    font-weight: 300;
+    font-style: normal;
+    color: #3FB7AD;
+}
+
+.header {
+    border-bottom: 1px solid black;
+}
+
+nav {
+    gap: 15px;
+    padding: 10px;
+    font-size: 20px;
+}
+
+.enlaces__nav {
+    text-decoration: none;
+    color: black;
+}
+
+    .enlaces__nav:hover {
+        color: #3FB7AD;
+        cursor: pointer;
+        transition: color 0.4s ease;
+    }
+
+.formulario {
+    border-radius: 15px;
+    font-weight: bold;
+}
+
+.borde {
+    border: #9F248E 5px solid;
+    transition: 3s border #9F248E;
+}
+
+.formulario input,
+.select {
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.boton-login {
+    background-color: #3FB7AD;
+    color: white;
+    border: none;
+    padding: 13px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.enlace-login {
+    text-decoration: none;
+    color: black;
+}
+
+
+.buscarPorCedula {
+    padding: 2px 10px;
+    border-radius: 2px;
+    background-color: #3FB7AD;
+    border: none;
+    
+}
+
+
+.imagen__paciente {
+    width: 300px;
+    height: 306px;
+}

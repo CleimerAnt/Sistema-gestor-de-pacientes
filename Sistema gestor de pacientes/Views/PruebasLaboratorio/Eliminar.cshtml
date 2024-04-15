@@ -1,0 +1,19 @@
+﻿@using SistemaGestorDePacientes.Core.Application.ViewModel.PruebasLaboratorioViewModel;
+@model SistemaGestorDePacientes.Core.Application.ViewModel.PruebasLaboratorioViewModel.PruebaLaboratorioPostViewModel;
+@{
+    ViewData["Title"] = "Eliminar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<form asp-controller="PruebasLaboratorio" asp-action="Eliminar" method="post" style="margin-bottom:500px ;">
+    <h2 class="text-black  fw-bold text-center mt-3">¿Desea Eliminar esta Prueba?</h2>
+    <div style="gap: 20px;" class="d-flex justify-content-center align-content-between mt-3 ">
+        <input type="hidden" asp-for="Id" />
+        <button class="btn btn-danger " type="submit">Eliminar</button>
+        <a asp-controller="PruebasLaboratorio" class="btn btn-info text-white" asp-action="Index">Cancelar</a>
+    </div>
+
+</form>
+
+

@@ -1,0 +1,49 @@
+﻿@using SistemaGestorDePacientes.Core.Application.ViewModel;
+@model SistemaGestorDePacientes.Core.Application.ViewModel.LoginViewModel;
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+
+        <main class="mt-4">
+      <form
+        class="formulario p-3"
+        asp-controller="Login"
+        asp-action="Index"
+        method="post"
+        style="height: 300px"
+      >
+        <div class="d-flex align-items-center justify-content-center flex-column">
+          <h1 class="text-center fw-bold mb-2">Login</h1>
+            @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="d-flex align-items-center justify-content-center"></div>
+
+        <div
+          class="d-flex justify-content-center align-items-center flex-column"
+        >
+          <input
+            class="form-control w-25 mb-3 mt-2"
+            asp-for="Nombre"
+            placeholder="Nombre de Usuario"
+          />
+          <input
+            class="form-control mb-3 w-25"
+            asp-for="Contraseña" type="password"
+            placeholder="Contraseña"
+          />
+        </div>
+
+        <div class="d-flex mt-3 justify-content-center">
+          <button class="boton-login" type="submit">Iniciar Sesion</button>
+          <a
+            asp-controller="Login"
+            class="mt-3 m-2 enlace-login"
+            asp-action="Registro"
+            >Registrarme</a >
+          
+        </div>
+      </form>
+    </main>

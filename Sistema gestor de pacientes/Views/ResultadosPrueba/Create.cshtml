@@ -1,0 +1,54 @@
+﻿@using SistemaGestorDePacientes.Core.Application.ViewModel.ResultadosPruebaViewModel;
+@model SistemaGestorDePacientes.Core.Application.ViewModel.ResultadosPruebaViewModel.ResultadosPruebaPostViewModel;
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    bool editMode = Model.Id == 0 ? false : true;
+  
+
+    var pruebas = ViewBag.pruebas as List
+    <SistemaGestorDePacientes.Core.Application.ViewModel.PruebasLaboratorioViewModel.PruebasLaboratioViewModel>;
+
+    var paciente = @ViewBag.paciente;
+    var CitasId = @ViewBag.citasId;
+}
+
+
+<div class="d-flex align-items-center justify-content-center container mt-4">
+    <form method="post" class="w-25 bg-secondary p-3" asp-controller="ResultadosPrueba" asp-action="@(editMode ? "Editar" : "Create")">
+        <div class="p-2 bg-light mb-2 ">
+            <h1 style="color: white;" class="text-center text-black">Agregar Prueba</h1>
+        </div> @Html.ValidationSummary(false, "", new { @class = "text-white" })
+
+        <select  multiple asp-for="opciones"  class="form-control mb-3 p-1">
+            <option disabled value="0">--Selecciona un Paciente--</option>
+            @foreach  (var pruebasPost in pruebas)
+            {
+                <option value="@pruebasPost.Id">
+                    @pruebasPost.NombreDeLaPrueba
+                </option>
+            }
+        </select>
+
+        <input  type="hidden" value="@paciente" asp-for="pacienteId" />
+
+        <input  type="hidden" asp-for="EstadoPrueba" value="pendiente" />
+
+        <input  type="hidden" asp-for="citaId" value="@CitasId" />
+
+        <input  type="hidden" value="@CitasId" name="citaId" />
+
+
+        <div class="d-flex  justify-content-end align-items-end " style="gap:10px ;">
+            <a asp-controller="Citas" asp-action="Index" class="btn btn-danger  font-weight-bold  ">Cancelar</a>
+            <button type="submit" class="btn btn-primary font-weight-bold">Crear</button>
+
+
+        </div>
+    </form>
+</div>
+
+<p class="text-center text-black mt-3">Debe Pulsar Control para seleccionar varios Campos</p>
+
+

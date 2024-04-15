@@ -1,0 +1,34 @@
+﻿@using SistemaGestorDePacientes.Core.Application.ViewModel.ResultadosPruebaViewModel;
+@model SistemaGestorDePacientes.Core.Application.ViewModel.ResultadosPruebaViewModel.ResultadosPruebaViewModel;
+@{
+    ViewData["Title"] = "EstadoReultados";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var Id = @ViewBag.Id;
+
+    var citaId = @ViewBag.citaId;
+}
+
+<div class="d-flex align-items-center justify-content-center container mt-4">
+
+    <form method="post" class="w-25 bg-secondary p-3" asp-controller="ResultadosPrueba" asp-action="EstadoReultados">
+        <div class="p-2 bg-light mb-2 ">
+            <h1 style="color: white;" class="text-center text-black">Resultado</h1>
+        </div> @Html.ValidationSummary(false, "", new { @class = "text-white" })
+
+            <input asp-for="Id" type="hidden"  value="@Id"/>
+
+            <input asp-for="ResultadoPrueba" class="form-control"/>
+
+        <input type="hidden" name="citaID" value="@citaId" />
+
+        <div class="d-flex  justify-content-end align-items-end">
+           
+            <button type="submit" class="btn btn-primary m-1 mt-3  font-weight-bold">Finalizar</button>
+
+
+        </div>
+     </form>
+
+</div>
+

@@ -1,0 +1,18 @@
+﻿@using SistemaGestorDePacientes.Core.Application.ViewModel.UsuarioViewModel;
+@model  SistemaGestorDePacientes.Core.Application.ViewModel.UsuarioViewModel.UsuarioPostViewModel;
+@{
+    ViewData["Title"] = "Eliminar";
+}
+
+    <form asp-controller="Usuario" asp-action="Eliminar" method="post" style="margin-bottom:500px ;">
+    <h2 class="text-black  fw-bold text-center mt-3">¿Desea Eliminar este Usuario?</h2>
+    <div style="gap: 20px;" class="d-flex justify-content-center align-content-between mt-3 ">
+        <input type="hidden" asp-for="Id" />
+        <button class="btn btn-danger " type="submit">Eliminar</button>
+        <a asp-controller="Usuario" class="btn btn-info text-white" asp-action="Index">Cancelar</a>
+    </div>
+       
+</form>
+
+
+

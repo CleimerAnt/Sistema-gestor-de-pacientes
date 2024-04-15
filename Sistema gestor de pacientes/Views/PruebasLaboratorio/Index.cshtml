@@ -1,0 +1,42 @@
+﻿@using SistemaGestorDePacientes.Core.Application.ViewModel.PruebasLaboratorioViewModel;
+@model List<SistemaGestorDePacientes.Core.Application.ViewModel.PruebasLaboratorioViewModel.PruebasLaboratioViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<a asp-controller="PruebasLaboratorio" style="background-color:#3FB7AD ;" class="mt-2 mb-3 btn text-white" asp-action="Create">Crear Prueba</a>
+@if (Model.Count == 0 || Model == null)
+{
+    <h1 class="mt-3 text-center">No hay hay Pruebas de Laboratorio Agregadas</h1>
+}
+else{
+<div class="container" >
+    <div class="row g-4">
+        @foreach (var pruebas in Model)
+        {
+            <div class="col-3 fw-boldy">
+                <div class="card__usuario">
+                    <div class="card__usuario-tipo text-center bg-secondary">
+                     
+                        <p class="text-center p-3 fw-bold nombre__medico text-white">@pruebas.NombreDeLaPrueba</p>
+                    </div>
+                   
+
+                    <div class="d-flex mb-2 align-content-end justify-content-end bg-light">
+
+                        <a asp-controller="PruebasLaboratorio" asp-action="Editar" asp-route-Id="@pruebas.Id" class="btn btn-primary m-2">Editar</a>
+
+                        <a asp-controller="PruebasLaboratorio" asp-action="Eliminar" asp-route-Id="@pruebas.Id" class="btn btn-danger m-2">Eliminar</a>
+
+
+                    </div>
+
+
+                </div>
+            </div>
+        }
+    </div>
+</div>
+}

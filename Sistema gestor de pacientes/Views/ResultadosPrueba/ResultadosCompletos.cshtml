@@ -1,0 +1,44 @@
+﻿@using SistemaGestorDePacientes.Core.Application.ViewModel.ResultadosPruebaViewModel;
+@model List<SistemaGestorDePacientes.Core.Application.ViewModel.ResultadosPruebaViewModel.ResultadosPruebaViewModel>;
+
+@{
+    ViewData["Title"] = "ResultadosCompletos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+@if (Model.Count == 0 || Model == null)
+{
+    <h1>No hay hay Resultados Agregados</h1>
+}
+else
+{
+       <h1 class="text-center mt-2 mb-2">Resultados Completados</h1>
+    <section class="mt-4">
+        <table class="table table-active text-center">
+            <thead>
+                <tr>
+                    <th>Nombre de la Prueba</th>
+                    <th>Resultado de la Prueba</th>
+                    
+                  
+
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var prueba in Model)
+                {
+                    <tr>
+                        <td>@prueba.pruebaLaboratorioNombre</td>
+                        <td>@prueba.ResultadoPrueba</td>
+                        
+                       
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </section>
+}

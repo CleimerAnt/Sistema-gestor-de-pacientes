@@ -1,0 +1,43 @@
+﻿@using SistemaGestorDePacientes.Core.Application.ViewModel.ResultadosPruebaViewModel;
+@model List<SistemaGestorDePacientes.Core.Application.ViewModel.ResultadosPruebaViewModel.ResultadosPruebaViewModel>;
+@{
+    ViewData["Title"] = "ResultadosPorCita";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<section class="mt-4">
+    <table class="table table-active text-center">
+        <thead>
+            <tr>
+                <th>Nombre de la Prueba</th>
+                <th>Estado de la Prueba</th>
+                <th>Acciones</th>
+            
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var prueba in Model)
+            {
+                <tr>
+                    <td>@prueba.pruebaLaboratorioNombre</td>
+                    <td>@prueba.EstadoPrueba</td>
+                    <td>
+                        
+                        <div style="gap: 20px"
+                             class="d-flex mt-2 align-content-center flex-row-reverse justify-content-center p-1">
+
+                            <a asp-controller="citas" asp-action="CambiarEstado" asp-route-Id="@prueba.CitasId" class="btn btn-primary ">Completar Cita</a>
+
+                            <a asp-controller="citas" asp-action="Index" class="btn btn-info text-white ">Cerrar Resultados</a>
+
+                        </div>
+                    </td>
+                  
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</section>
+

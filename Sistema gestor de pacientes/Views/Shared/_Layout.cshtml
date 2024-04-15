@@ -1,0 +1,94 @@
+﻿@using Microsoft.AspNetCore.Http;
+@using SistemaGestorDePacientes.Core.Application.Helpers;
+@using SistemaGestorDePacientes.Core.Application.ViewModel;
+@using SistemaGestorDePacientes.Core.Application.ViewModel.UsuarioViewModel
+@inject IHttpContextAccessor httpContext;
+
+@{
+    UsuarioViewModel usuario = httpContext.HttpContext.Session.get<UsuarioViewModel>("Usuario Ayudante");
+
+    UsuarioViewModel administrador = httpContext.HttpContext.Session.get<UsuarioViewModel>("Administrador");
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Sistema_gestor_de_pacientes</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Sistema_gestor_de_pacientes.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/Style.css" asp-append-version="true" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap"
+          rel="stylesheet" />
+</head>
+<body>
+  
+    @if (usuario is not null)
+    {
+        <header class="container mt-2 pb-3 header d-flex justify-content-between">
+
+            <h1 class="titulo">ITLA Hospital</h1>
+
+            @if (usuario is not null)
+            {
+                <nav class="d-flex align-items-center justify-content-center">
+                    <a class="enlaces__nav" asp-controller="Paciente" asp-action="Index"
+                    >Pacientes</a>
+
+                    <a class="enlaces__nav" asp-controller="Citas" asp-action="Index"
+                    >Citas</a>
+
+                    <a asp-controller="ResultadosPrueba" asp-action="Index" class="enlaces__nav">Resultados de Prueba</a>
+                    <a
+                    class="enlaces__nav"
+                    asp-controller="Usuario"
+                    asp-action="CerrarSesion"
+                    >Cerrar Sesion</a>
+
+                   
+
+                </nav>
+            }
+        </header> }
+
+
+    @if (administrador is not null)
+    {
+        <header class="container mt-2 pb-3 header d-flex justify-content-between">
+
+            <h1 class="titulo">ITLA Hospital</h1>
+
+            
+                <nav class="d-flex align-items-center justify-content-center">
+                    <a class="enlaces__nav" asp-controller="Usuario" asp-action="Index">Usuarios</a>
+
+                    <a class="enlaces__nav" asp-controller="Medico" asp-action="Index">Medicos</a>
+
+                    <a asp-controller="PruebasLaboratorio" asp-action="Index" class="enlaces__nav">Pruebas de Laboratorio</a>
+                    <a class="enlaces__nav"
+                       asp-controller="Usuario"
+                       asp-action="CerrarSesion">Cerrar Sesion</a>
+
+               
+                </nav>
+            
+        </header>
+    }
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+  
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
